@@ -1,0 +1,86 @@
+{
+  "name":"ied",
+  "description":"calculates amount of ignored defense from multiple sources",
+  "options":[
+    {
+      "name":"source1",
+      "description":"first source",
+      "required":true,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source2",
+      "description":"second source",
+      "required":true,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source3",
+      "description":"third source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source4",
+      "description":"fourth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source5",
+      "description":"fifth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source6",
+      "description":"sixth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source7",
+      "description":"seventh source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source8",
+      "description":"eighth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source9",
+      "description":"ninth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    },
+    {
+      "name":"source10",
+      "description":"tenth source",
+      "required":false,
+      "type":10,
+      "minValue":-100.0,
+      "maxValue":100.0
+    }
+  ]
+}

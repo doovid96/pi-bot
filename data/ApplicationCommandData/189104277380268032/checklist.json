@@ -1,0 +1,12 @@
+{
+  "name":"checklist",
+  "description":"what to check for before bossing",
+  "options":[
+    {
+      "name":"ephemeral",
+      "description":"make this checklist show to just you",
+      "required":false,
+      "type":5
+    }
+  ]
+}

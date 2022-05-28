@@ -1,0 +1,18 @@
+{
+  "name":"divide",
+  "description":"divides one number by another",
+  "options":[
+    {
+      "name":"dividend",
+      "description":"a number to be divided by another number",
+      "required":true,
+      "type":10
+    },
+    {
+      "name":"divisor",
+      "description":"a number by which another number is to be divided",
+      "required":true,
+      "type":10
+    }
+  ]
+}

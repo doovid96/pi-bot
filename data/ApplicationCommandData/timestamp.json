@@ -1,0 +1,96 @@
+{
+  "name":"timestamp",
+  "description":"displays Discord timestamps for the time specified (UTC)",
+  "options":[
+    {
+      "name":"style",
+      "description":"how to display the timestamp",
+      "required":true,
+      "type":3,
+      "choices":[
+        {
+          "name":"Short Time",
+          "value":"t"
+        },
+        {
+          "name":"Long Time",
+          "value":"T"
+        },
+        {
+          "name":"Short Date",
+          "value":"d"
+        },
+        {
+          "name":"Long Date",
+          "value":"D"
+        },
+        {
+          "name":"Short Date/Time",
+          "value":"f"
+        },
+        {
+          "name":"Long Date/Time",
+          "value":"F"
+        },
+        {
+          "name":"Relative Time",
+          "value":"R"
+        }
+      ]
+    },
+    {
+      "name":"verbose",
+      "description":"display more information about the UNIX timestamp",
+      "required":false,
+      "type":5
+    },
+    {
+      "name":"year",
+      "description":"four-digit integer year (can be negative)",
+      "required":false,
+      "type":4,
+      "minValue":-9999,
+      "maxValue":9999
+    },
+    {
+      "name":"month",
+      "description":"integer month (1 to 12)",
+      "required":false,
+      "type":4,
+      "minValue":1,
+      "maxValue":12
+    },
+    {
+      "name":"date",
+      "description":"date of the month (1 to 31)",
+      "required":false,
+      "type":4,
+      "minValue":1,
+      "maxValue":31
+    },
+    {
+      "name":"hour",
+      "description":"hour of the day (00 to 23)",
+      "required":false,
+      "type":4,
+      "minValue":0,
+      "maxValue":23
+    },
+    {
+      "name":"minute",
+      "description":"minute of the hour (00 to 59)",
+      "required":false,
+      "type":4,
+      "minValue":0,
+      "maxValue":59
+    },
+    {
+      "name":"second",
+      "description":"second of the minute (00 to 59)",
+      "required":false,
+      "type":4,
+      "minValue":0,
+      "maxValue":59
+    }
+  ]
+}

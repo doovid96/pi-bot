@@ -1,0 +1,18 @@
+{
+  "name":"add",
+  "description":"sum two values",
+  "options": [
+    {
+      "name":"addend1",
+      "description":"first addend to be summed",
+      "required":true,
+      "type":10
+    },
+    {
+      "name":"addend2",
+      "description":"second addend to be summed",
+      "required":true,
+      "type":10
+    }
+  ]
+}

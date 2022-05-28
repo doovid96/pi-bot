@@ -1,0 +1,28 @@
+{
+  "name":"sale",
+  "description":"returns fair amount of mesos to trade party after a sale",
+  "options":[
+    {
+      "name":"mesos",
+      "description":"sale amount",
+      "required":true,
+      "type":4,
+      "minValue":50,
+      "maxValue":1000000000000
+    },
+    {
+      "name":"size",
+      "description":"party size including yourself",
+      "required":true,
+      "type":4,
+      "minValue":2,
+      "maxValue":6
+    },
+    {
+      "name":"mvp",
+      "description":"True if seller is at least MVP Silver",
+      "required":true,
+      "type":5
+    }
+  ]
+}

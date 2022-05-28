@@ -1,0 +1,14 @@
+{
+  "name":"fr",
+  "description":"sets a reminder for the upcoming flag race",
+  "options":[
+    {
+      "name":"minutes",
+      "description":"number of minutes before race to give warning",
+      "required":false,
+      "type":4,
+      "minValue":0,
+      "maxValue":10
+    }
+  ]
+}

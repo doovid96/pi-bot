@@ -1,0 +1,18 @@
+{
+  "name":"multiply",
+  "description":"returns the product of two numbers",
+  "options":[
+    {
+      "name":"factor1",
+      "description":"(first) number that when multiplied with another produces a product",
+      "required":true,
+      "type":10
+    },
+    {
+      "name":"factor2",
+      "description":"(second) number that when multiplied with another produces a product",
+      "required":true,
+      "type":10
+    }
+  ]
+}
