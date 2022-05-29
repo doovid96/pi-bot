@@ -5,7 +5,7 @@
     {
       "name":"style",
       "description":"how to display the timestamp",
-      "required":true,
+      "required":false,
       "type":3,
       "choices":[
         {
