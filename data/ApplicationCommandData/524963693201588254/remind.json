@@ -1,0 +1,70 @@
+{
+  "name": "remind",
+  "description": "sets a reminder in the future",
+  "options": [
+    {
+      "name": "type",
+      "description": "determines how to interpret input",
+      "required": true,
+      "type": 3,
+      "choices": [
+        {
+          "name": "at",
+          "value": "at"
+        },
+        {
+          "name": "in",
+          "value": "in"
+        }
+      ]
+    },
+    {
+      "name": "year",
+      "description": "year to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": -9999,
+      "maxValue": 9999
+    },
+    {
+      "name": "month",
+      "description": "month to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": -9999,
+      "maxValue": 9999
+    },
+    {
+      "name": "date",
+      "description": "date to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": 1,
+      "maxValue": 31
+    },
+    {
+      "name": "hour",
+      "description": "hour to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 11
+    },
+    {
+      "name": "minute",
+      "description": "minute to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 59
+    },
+    {
+      "name": "second",
+      "description": "second to be reminded",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 59
+    }
+  ]
+}
