@@ -105,14 +105,14 @@ client.on('ready', async (client) => {
   const PremiereTestServer = '894694514307006564';
   const ReichenbachId = '524963693201588254';
 
-  await clearGuildApplicationCommands(client, ReichenbachId);
-  await clearGuildApplicationCommands(client, PremiereTestServer);
-  await clearGuildApplicationCommands(client, PremiereId);
-  await clearGlobalApplicationCommands(client);
+  // await clearGuildApplicationCommands(client, ReichenbachId);
+  // await clearGuildApplicationCommands(client, PremiereTestServer);
+  // await clearGuildApplicationCommands(client, PremiereId);
+  // await clearGlobalApplicationCommands(client);
 
-  await deployGuildApplicationCommands(client, ReichenbachId);
-  await deployGuildApplicationCommands(client, PremiereTestServer);
-  await deployGuildApplicationCommands(client, PremiereId);
+  // await deployGuildApplicationCommands(client, ReichenbachId);
+  // await deployGuildApplicationCommands(client, PremiereTestServer);
+  // await deployGuildApplicationCommands(client, PremiereId);
   await deployGlobalApplicationCommands(client);
 
   process.exit(0);

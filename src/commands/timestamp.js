@@ -14,15 +14,12 @@ const getCurrentTime = () => {
 	};
 }
 
-const getInputTime = (interaction) => {
-  return {
-    year: interaction.options.getInteger('year'),
-    month: interaction.options.getInteger('month'),
-    date: interaction.options.getInteger('date'),
-    hour: interaction.options.getInteger('hour'),
-    minute: interaction.options.getInteger('minute'),
-    second: interaction.options.getInteger('second')
-  };
+const getInputTime = (interaction, unitNames) => {
+  const input = {};
+  for (const name of unitNames) {
+    input[name] = interaction.options.getInteger(name);
+  }
+  return input;
 }
 
 const getDefaultValues = () => {
@@ -97,11 +94,11 @@ const sendInputTime = (interaction, output, style, defaultedUnits, verbose) => {
 
 exports.run = async (interaction) => {
   const currentTime = getCurrentTime();
-  const inputTime = getInputTime(interaction);
-  const defaultValues = getDefaultValues();
-  const style = interaction.options.getString('style', true);
-  const verbose = interaction.options.getBoolean('verbose') ?? false;
   const unitNames = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+  const inputTime = getInputTime(interaction, unitNames);
+  const defaultValues = getDefaultValues();
+  const style = interaction.options.getString('style') ?? 'f';
+  const verbose = interaction.options.getBoolean('verbose') ?? false;
   const inputProvided = unitNames.map(unitName => inputTime[unitName]).some(t => t != undefined);
   if (!inputProvided) {
     sendCurrentTime(interaction, currentTime, style, verbose)
