@@ -1,4 +1,4 @@
-// src/commands/timestamp.js
+// src/commands/remindat.js
 
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
@@ -45,17 +45,19 @@ const fillTimeValues = (inputTime, unitNames, minIndex, nowDate) => {
   }
 }
 
+const calculateSeconds = (inputTime, nowDate) => {
+  const reminderDayjs = dayjs(Date.UTC(inputTime.year, inputTime.month - 1, inputTime.date, inputTime.hour, inputTime.minute, inputTime.second));
+  const nowDayjs = dayjs(nowDate);
+  return reminderDayjs.diff(nowDayjs, 'second');
+}
+
 const stringifyTimeValues = (inputTime, unitNames) => {
   unitNames.forEach(unit => inputTime[unit] = inputTime[unit].toString());
 }
 
-const calculateDelayMilliseconds = (inputTime, nowDate) => {
-  const reminderDayjs = dayjs(Date.UTC(inputTime.year, inputTime.month - 1, inputTime.date, inputTime.hour, inputTime.minute, inputTime.second));
-  const nowDayjs = dayjs(nowDate);
-  return reminderDayjs.diff(nowDayjs, 'millisecond');
-}
-
-const remindAt = async (interaction) => {
+exports.run = async (interaction) => {
+  const minSeconds = 10;
+  const maxSeconds = 24 * 60 * 60;
   const nowDate = new Date();
   const unitNames = ['year', 'month', 'date', 'hour', 'minute', 'second'];
   const inputTime = getInputTime(interaction, unitNames);
@@ -70,60 +72,38 @@ const remindAt = async (interaction) => {
   const indices = Object.entries(inputTime)
     .filter(pair => pair[1] != null)
     .map(pair => unitNames.findIndex(name => name == pair[0]));
-  const minIndex = Math.min(...indices);
+    const minIndex = Math.min(...indices);
   fillTimeValues(inputTime, unitNames, minIndex, nowDate);
+  const seconds = calculateSeconds(inputTime, nowDate);
   stringifyTimeValues(inputTime, unitNames);
-  const milliseconds = calculateDelayMilliseconds(inputTime, nowDate);
-  const seconds = Math.floor(milliseconds / 1000);
   if (seconds < 0) {
     interaction.reply({
-      embeds: [commandEmbed(interaction.commandName, 'This time has passed.', inputTime)],
+      embeds: [commandEmbed(interaction.commandName, 'Unsuccessful: This time has passed.', inputTime)],
       ephemeral: true
     }).catch(e => console.error(e));
     return;
   }
-  else if (seconds < 10) {
+  if (seconds < minSeconds) {
     interaction.reply({
-      embeds: [commandEmbed(interaction.commandName, `${seconds} until the time you asked for a reminder.`, inputTime)],
+      embeds: [commandEmbed(interaction.commandName, `Unsuccessful: This time is in ${seconds.toLocaleString()} seconds which is less than the minimum allowed time of ${seconds.toLocaleString()} seconds.`, inputTime)],
       ephemeral: true
     }).catch(e => console.error(e));
     return;
   }
-  else if (seconds > 60*60*24) {
+  if (seconds > maxSeconds) {
     interaction.reply({
-      embeds: [commandEmbed(interaction.commandName, 'Reminder unsuccessful. Limit of one day.', inputTime)],
+      embeds: [commandEmbed(interaction.commandName, `Unsuccessful: This time is in ${seconds.toLocaleString()} seconds which is more than the maximum allowed time of ${maxSeconds.toLocaleString()} seconds.`, inputTime)],
       ephemeral: true
     }).catch(e => console.error(e));
     return;
   }
-  else {
-    interaction.reply({
-      content: 'Restarts interrupt reminders.',
-      embeds: [commandEmbed(interaction.commandName, `Reminder successful.`, inputTime)],
-      ephemeral: false
-    }).catch(e => console.error(e));
-  }
-  setTimeout(() => {
-    interaction.channel.send({
-      content: interaction.user.toString(),
-      embeds: [commandEmbed(interaction.commandName, 'Reminding you.')]
-    }).catch(e => console.error(e));
-  }, milliseconds);
-}
-
-const remindIn = async (interaction) => {
   interaction.reply({
-    content: 'placeholder',
+    embeds: [commandEmbed(interaction.commandName, `Successful: Setting reminder in ${seconds.toLocaleString()} seconds.`, inputTime)],
     ephemeral: true
-  }).catch(e => console.log(e));
-}
-
-exports.run = async (interaction) => {
-  const type = interaction.options.getString('type', true);
-  if (type == 'at') {
-    remindAt(interaction);
-  }
-  else if (type == 'in') {
-    remindIn(interaction);
-  }
+  }).catch(e => console.error(e));
+  setTimeout(() => {
+    interaction.user.send({
+      embeds: [commandEmbed(interaction.commandName, interaction.options.getString('message', true))]
+    }).catch(e => console.error(e));
+  }, seconds * 1000);
 }

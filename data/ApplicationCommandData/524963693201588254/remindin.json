@@ -1,0 +1,36 @@
+{
+  "name": "remindin",
+  "description": "sets a reminder in the time specified",
+  "options": [
+    {
+      "name": "message",
+      "description": "message to send later",
+      "required": true,
+      "type": 3
+    },
+    {
+      "name": "hours",
+      "description": "number of hours to send reminders in",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 23
+    },
+    {
+      "name": "minutes",
+      "description": "number of minutes to send reminder in",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 59
+    },
+    {
+      "name": "seconds",
+      "description": "number of seconds to send reminder in",
+      "required": false,
+      "type":4,
+      "minValue": 0,
+      "maxValue": 59
+    }
+  ]
+}
