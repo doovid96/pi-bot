@@ -1,0 +1,60 @@
+{
+  "name": "remindat",
+  "description": "sets a reminder at a time specified",
+  "options": [
+    {
+      "name": "message",
+      "description": "message to send later",
+      "required": true,
+      "type": 3
+    },
+    {
+      "name": "year",
+      "description": "year of reminder",
+      "required": false,
+      "type": 4,
+      "minValue": -9999,
+      "maxValue": 9999
+    },
+    {
+      "name": "month",
+      "description": "month to be reminded (1-12)",
+      "required": false,
+      "type": 4,
+      "minValue": 1,
+      "maxValue": 12
+    },
+    {
+      "name": "date",
+      "description": "date to be reminded (1-31)",
+      "required": false,
+      "type": 4,
+      "minValue": 1,
+      "maxValue": 31
+    },
+    {
+      "name": "hour",
+      "description": "hour to be reminded (00-23)",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 23
+    },
+    {
+      "name": "minute",
+      "description": "minute to be reminded (00-59)",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 59
+    },
+    {
+      "name": "second",
+      "description": "second to be reminded (00-59)",
+      "required": false,
+      "type": 4,
+      "minValue": 0,
+      "maxValue": 59
+    }
+  ]
+}

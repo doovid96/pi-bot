@@ -47,7 +47,7 @@ exports.run = async (interaction) => {
   stringifyTimeValues(inputTime, unitNames);
   interaction.reply({
     embeds: [commandEmbed(interaction.commandName, `Successful: Sending reminder in ${seconds.toLocaleString()} seconds.`, inputTime)],
-    ephemeral: true
+    ephemeral: false
   }).catch(e => console.error(e));
   setTimeout(() => {
     interaction.user.send({

@@ -64,7 +64,7 @@ exports.run = async (interaction) => {
   const inputProvided = unitNames.map(name => inputTime[name]).some(number => number != undefined);
   if (!inputProvided) {
     interaction.reply({
-      embeds: [commandEmbed(interaction.commandName, 'No input was provided.')],
+      embeds: [commandEmbed(interaction.commandName, 'No time input was provided.')],
       ephemeral: true
     }).catch(e => console.error(e));
     return;
@@ -85,7 +85,7 @@ exports.run = async (interaction) => {
   }
   if (seconds < minSeconds) {
     interaction.reply({
-      embeds: [commandEmbed(interaction.commandName, `Unsuccessful: This time is in ${seconds.toLocaleString()} seconds which is less than the minimum allowed time of ${seconds.toLocaleString()} seconds.`, inputTime)],
+      embeds: [commandEmbed(interaction.commandName, `Unsuccessful: This time is in ${seconds.toLocaleString()} seconds which is less than the minimum allowed time of ${minSeconds.toLocaleString()} seconds.`, inputTime)],
       ephemeral: true
     }).catch(e => console.error(e));
     return;
@@ -99,7 +99,7 @@ exports.run = async (interaction) => {
   }
   interaction.reply({
     embeds: [commandEmbed(interaction.commandName, `Successful: Setting reminder in ${seconds.toLocaleString()} seconds.`, inputTime)],
-    ephemeral: true
+    ephemeral: false
   }).catch(e => console.error(e));
   setTimeout(() => {
     interaction.user.send({
