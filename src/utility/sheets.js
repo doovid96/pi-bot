@@ -5,8 +5,8 @@ const sheets = google.sheets('v4');
 
 async function getAuthClient() {
 	const auth = new google.auth.GoogleAuth({
-  keyFile: 'D:\\Code\\bots\\credentials.json',
-		// keyFile: '/home/pi/bots/credentials.json',
+  	// keyFile: 'D:\\Code\\bots\\credentials.json',
+		keyFile: '/home/pi/bots/credentials.json',
 		scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly']
 	});
 	const authClient = await auth.getClient();
