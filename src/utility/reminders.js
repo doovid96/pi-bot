@@ -41,7 +41,7 @@ function pushCustom({ reminders, time, data }) {
 	}
 	const now = {
 		year: time.getUTCFullYear(),
-		month: (time.getUTCMonth() + 1) % 12,
+		month: time.getUTCMonth() % 12 + 1,
 		day: time.getUTCDate(),
 		hour: time.getUTCHours(),
 		minute: time.getUTCMinutes()
